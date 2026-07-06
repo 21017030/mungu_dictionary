@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>153 네오 EF</title>
+    <link rel="stylesheet" href="../../tabDesign/mainTab.css">
+    <link rel="stylesheet" href="../background/backgroundStyle.css"> <!-- 배경화면 디자인 -->
+    <link rel="stylesheet" href="../categorySource/textBodyStyle.css"> <!-- 본문 내용 디자인 -->
+    <link rel="stylesheet" href="../productSource/productStyle.css"> <!--모든 상품들이 이 스타일을 사용하기 때문에 따로 둠-->
+    <link rel="stylesheet" href="../homebutton/homebuttonStyle.css"> <!-- 홈 버튼 디자인 -->
+    <script src="../../tabClock/tabClock.js"></script>
+    <script src="../productSource/productMethod.js"></script>
+</head>
+<body>
+    <div class="top">
+        <a href="../../main.html">
+            <img src="../../image/logoimage.png">
+        </a>
+        <ul class="label">
+            <li class="tab"><a href="../mechanicalPencilCategory.html">샤프</a></li>
+            <li class="tab"><a href="../ballpointPenCategory.html">볼펜</a></li>
+            <li class="tab"><a href="../fountainPenCategory.html">만년필</a></li>
+            <li class="tab"><a href="../notebookCategory.html">공책</a></li>
+            <li class="tab"><a href="../eraserCategory.html">지우개</a></li>
+        </ul>
+    </div>
+
+    <div class = "second">
+    </div>
+
+    <div id="time">
+        <p id="year_month_day_week"></p>
+        <p id="hour_minute_second"></p>
+    </div>
+    <!--홈 버튼 부분-->
+    <a href="../../main.html">
+        <div id="home">
+            <img id="home-button" src="../homebutton/home.png">
+            <h2>홈으로</h2>
+        </div>
+    </a>
+    <div id="text-body">
+        <p id="title">상세 정보</p>
+        <hr>
+        <div id="product-container">
+        <img id="product" src="../image/153neo.png" alt="153 네오 이미지">
+        <p id="product-name"></p>
+        <p id="product-name">153 네오 EF</p>
+        <table id="info">
+            <tr>
+                <th>브랜드</th>
+                <td><a href="https://www.monami.com/index.php"><img src="../brandlogo/monami_logo.png" alt="모나미 로고" width="320" height="90"></a>
+                    <p>모나미</p></td>
+            </tr>
+            <tr>
+                <th>사이즈</th>
+                <td>13mm * 132mm (두깨 * 길이)</td>
+            </tr>
+            <tr>
+                <th>무게</th>
+                <td>25g</td>
+            </tr>
+            <tr>
+                <th>닙 종류</th>
+                <td>EF촉</td>
+            </tr>
+            <tr>
+                <th>닙 재질</th>
+                <td>스테인리스 스틸</td>
+            </tr>
+            <tr>
+                <th>제조국</th>
+                <td>대한민국</td>
+            </tr>
+            <tr>
+                <th>색깔 종류</th>
+                <td id="color">
+                    <div class="fig" style="background:rgb(35, 24, 22)"></div><span>제트블랙</span>
+                    <div class="fig" style="background:rgb(226, 192, 182)"></div><span>코랄 핑크</span>
+                    <div class="fig" style="background:rgb(247, 233, 222)"></div><span>클래식 베이지</span>
+                </td>
+            </tr>
+        </table>
+        </div>
+
+        <div id="description">
+            <h1 align="center">제품 특징</h1>
+            <ul>
+                <li>가늘고 깨끗한 필기가 가능한 EF촉</li>
+                <li>일반 만년필 대비 짧은 배럴과 금속 클립으로 휴대성 강화</li>
+                <li>다양한 색상의 모나미 병잉크 및 잉크카트리지 사용 가능</li>
+            </ul>
+        </div>
+
+        <div id="select-product">
+            <h3 align="center">제품 사진</h3><br>
+            <input class="select-button" onclick="selectProduct(this, './image/neoblack.png')" type="button" value="기본 구성">
+            <input class="select-button" onclick="selectProduct(this, './image/neobeige.png')" type="button" value="선물 세트">
+            <input class="select-button" onclick="selectProduct(this, './image/neopink.png')" type="button" value="선물 세트">
+            <div id="selected-image">
+                <img id="show" src="https://dummyimage.com/700x500/fff&text=Select+Picture" width="700px" style="margin-top: 100px;" alt="선택된 제품 이미지">
+                <!--더미 이미지에 원하는 텍스트를 넣을 수 있다(한국어는 불가)-->
+            </div>
+        </div>
+
+
+
+        <input type="button" id="back-button" value="뒤로 가기" onclick="location.href='../fountainPenCategory.html'">
+    </div>
+
+
+</body>
+</html>

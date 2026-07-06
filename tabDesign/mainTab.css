@@ -1,0 +1,108 @@
+        
+        .top{
+            left: 0; top:0; right:0;
+            width: 85%;
+            height: 50px;
+            padding-top:10px;
+            overflow:hidden; /*한 영역으로 잡음 */
+            background-color: white;
+            min-width: 850px;
+            position:fixed; /* 위쪽 영역 고정 */
+            z-index:100; /* 버튼의 스케일이 커질때 main탭 위로 올라오게 하기 위해서 필요 */
+        }
+        .top > a > img{
+            float: left;
+            margin-left:30px;
+            height: 50px;
+        }
+        .label{
+            display:flex; 
+            width:68%;
+            padding-left: 50px;/* 좀더 중앙에 맟추기 위해서 padding 이용 */
+            text-align: center;
+        }
+        .tab{
+            list-style: none;
+            width:20%;
+        }
+        .tab > a{
+            text-decoration: none;
+            color: black;
+            font-weight: bold;
+            text-align:center;
+            font-size: 18px;
+        }
+        .tab> a:hover{
+            text-decoration: underline;
+        }
+        .year{
+            display:flex;
+            float: right;
+            margin-right: 50px;
+            font-weight: bold;
+            font-size: 18px;
+        }
+
+        .second{
+            left: 0; top:60px; right:0;
+            width: 85%;
+            height: 50px;
+            background-color: white;
+            overflow: hidden;
+            min-width: 800px;
+            padding-top:10px;
+            position:fixed;
+            box-shadow: 0px 5px 2px rgb(200, 200, 200);
+            z-index:101; /* 버튼의 스케일이 커질때 main탭 위로 올라오게 하기 위해서 필요 */
+        }
+        div.search{
+            text-align: center;
+            overflow: hidden;
+            margin: 10px auto;
+        }
+
+        #first-category-select, #second-category-select{
+            font-size: 16px;
+            border-radius: 10px;
+        }
+        #first-category-select{
+            width:80px;
+            height:30px;
+        }
+        #second-category-select{
+            width:300px;
+            height:30px;
+        }
+        #categoryMove{
+            width:110px;
+            height:34px;
+            font-size:16px;
+            border-radius:10px;
+            border-width:1px;
+            margin-left:10px;
+            cursor: pointer;
+        }
+        #categoryMove:active{
+            background-color:gray;
+            color:white;
+        }
+
+        #time{
+            position:fixed;
+            right:0; top:0;
+            width:15%;
+            height:120px;
+            min-width: 200px;
+            background-color: rgb(240, 240, 240);
+            text-align: center;
+            box-shadow: 0px 5px 2px rgb(200, 200, 200);
+            z-index:102; /* 버튼의 스케일이 커질때 main탭 위로 올라오게 하기 위해서 필요 */
+        }
+        #year_month_day_week{
+            font-size:13px;
+            font-weight: bold;
+        }
+        #hour_minute_second{
+            font-size:23px;
+            font-weight: bold;
+        }

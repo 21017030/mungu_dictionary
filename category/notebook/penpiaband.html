@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>5000 밴딩 스프링 노트</title>
+    <link rel="stylesheet" href="../../tabDesign/mainTab.css">
+    <link rel="stylesheet" href="../background/backgroundStyle.css"> <!-- 배경화면 디자인 -->
+    <link rel="stylesheet" href="../categorySource/textBodyStyle.css"> <!-- 본문 내용 디자인 -->
+    <link rel="stylesheet" href="../productSource/productStyle.css"> <!--모든 상품들이 이 스타일을 사용하기 때문에 따로 둠-->
+    <link rel="stylesheet" href="../homebutton/homebuttonStyle.css"> <!-- 홈 버튼 디자인 -->
+    <script src="../../tabClock/tabClock.js"></script>
+    <script src="../productSource/productMethod.js"></script>
+</head>
+<body>
+    <div class="top">
+        <a href="../../main.html">
+            <img src="../../image/logoimage.png">
+        </a>
+        <ul class="label">
+            <li class="tab"><a href="../mechanicalPencilCategory.html">샤프</a></li>
+            <li class="tab"><a href="../ballpointPenCategory.html">볼펜</a></li>
+            <li class="tab"><a href="../fountainPenCategory.html">만년필</a></li>
+            <li class="tab"><a href="../notebookCategory.html">공책</a></li>
+            <li class="tab"><a href="../eraserCategory.html">지우개</a></li>
+        </ul>
+    </div>
+
+    <div class = "second">
+    </div>
+
+    <div id="time">
+        <p id="year_month_day_week"></p>
+        <p id="hour_minute_second"></p>
+    </div>
+    <!--홈 버튼 부분-->
+    <a href="../../main.html">
+        <div id="home">
+            <img id="home-button" src="../homebutton/home.png">
+            <h2>홈으로</h2>
+        </div>
+    </a>
+    <div id="text-body">
+        <p id="title">상세 정보</p>
+        <hr>
+        <div id="product-container">
+        <img id="product" src="../image/penpiaband.png" alt="5000 밴딩 스프링 노트 이미지">
+        <p id="product-name"></p>
+        <p id="product-name">5000 밴딩 스프링 노트</p>
+        <table id="info">
+            <tr>
+                <th>브랜드</th>
+                <td><a href="https://penpia.kr/index.html"><img src="../brandlogo/penpia_logo.png" alt="펜피아 로고" width="300" height="120"></a>
+                    <p>펜피아</p></td>
+            </tr>
+            <tr>
+                <th>사이즈</th>
+                <td>A5: 125mm * 190mm (가로 * 세로)</td>
+            </tr>
+            <tr>
+                <th>장수</th>
+                <td>130페이지</td>
+            </tr>
+            <tr>
+                <th>제본 종류</th>
+                <td>스프링 좌철(SP)</td>
+            </tr>
+            <tr>
+                <th>제조국</th>
+                <td>대한민국</td>
+            </tr>
+            <tr>
+                <th>색깔 종류</th>
+                <td id="color">
+                    <div class="fig" style="background:rgb(189, 196, 204)"></div><span>그레이</span>
+                    <div class="fig" style="background:rgb(255, 255, 255); border:1px solid black"></div><span>화이트</span>
+                </td>
+            </tr>
+        </table>
+        </div>
+
+        <div id="description">
+            <h1 align="center">제품 특징</h1>
+            <ul>
+                <li>밴딩이 있어 노트가 벌어지지 않도록 함</li>
+                <li>360도 부드럽게 펼쳐지는 고급스러운 트윈링</li>
+                <li>7mm 줄간격으로 글쓰기가 편리함</li>
+            </ul>
+        </div>
+
+        <div id="select-product">
+            <h3 align="center">제품 사진</h3><br>
+            <input class="select-button" onclick="selectProduct(this, './image/penpiabandgray.png')" type="button" value="그레이">
+            <input class="select-button" onclick="selectProduct(this, './image/penpiabandwhite.png')" type="button" value="화이트">
+            <div id="selected-image">
+                <img id="show" src="https://dummyimage.com/700x500/fff&text=Select+Picture" height="500px" alt="선택된 제품 이미지">
+                <!--더미 이미지에 원하는 텍스트를 넣을 수 있다(한국어는 불가)-->
+            </div>
+        </div>
+
+
+
+        <input type="button" id="back-button" value="뒤로 가기" onclick="location.href='../notebookCategory.html'">
+    </div>
+
+
+</body>
+</html>

@@ -1,0 +1,35 @@
+        #text-body > ul{
+            padding :75px;
+            overflow:hidden;
+        }
+        .product-list{
+            list-style:none;
+            float:left;
+            width:320px;
+            height:400px;
+            margin:10px;
+            text-align:center;
+            border-width: 0.5px; 
+            border-color: rgb(200, 200, 200);
+            border-style:solid; /*태두리 종류가 있어야 다른 테두리 관련 속성들이 적용됨.*/
+            border-radius: 10px;
+            overflow:hidden;
+        }
+        .product-image{
+            transition:0.4s;
+        }
+        .product-image:hover{
+            transform:translateY(-10px);
+            
+        }
+        .product-background{
+            display: inline-block;
+            width:320px;
+            border-radius:10px;
+            background-color: rgb(235, 251, 255);
+        }
+        #title{
+            font-size:46px;
+            font-weight:bold;
+            text-align:center;
+        }

@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>문구 사전</title>
+    <link rel =stylesheet href="./tabDesign/mainTab.css"> <!-- 상단 탭과 검색어 디자인 -->
+    <script src="jquery-3.7.1.min.js"></script> <!--슬라이더를 위한 jquery 사용-->
+    <style>
+        /*메인 페이지 슬라이더 구현 부분 */
+        #content-main{
+            width:1300px;
+            height:600px;
+            overflow:hidden;
+            position:relative;
+            text-align: center;
+            margin: 120px auto 0 auto;
+        }
+        #content-slider{
+            display:inline-block;
+            width: 1100px;
+            height: 600px;
+            margin: 0 auto;
+            position:relative;
+            overflow:hidden;
+        }
+        .content-container{
+            width: 4400px;  /* 이미지를 추가할때 이부분을 늘려야 함(1100px * 이미지 개수) */
+            height: 600px;
+            position:absolute;
+        }
+        .content{
+            width:1100px;
+            height:600px;
+            float:left;
+        }
+        #content-title{
+            width: 600px;
+            color:white;
+            font-weight:bold;
+            position:absolute; /*margin auto 적용 안됨*/
+            top:140px; /*요소 중앙 배치 9주차 활용*/
+            left: 50%;
+            margin-left:-300px;
+            z-index: 10;
+        }
+        #content-title > #big-title{
+            font-size: 100px;
+            text-shadow: 4px 4px 8px rgb(40,40,40);
+            margin:20px 0;
+            display:none; /*애니메이션을 적용하기 위해 처음에는 안 보이게 설정 */
+        }
+        #content-title > #small-title{
+            font-size: 30px;
+            text-shadow: 4px 4px 8px rgb(40,40,40);
+            margin:20px 0;
+            display:none;
+        }
+        #slider-button-left, #slider-button-right{
+            position:absolute;
+            top:50%; /*요소 중앙 배치 9주차 활용*/
+            margin-top:-100px;
+            width: 50px;
+            height: 200px;
+            font-size: 40px;
+            font-weight:bold;
+            cursor:pointer;
+            opacity:0.6;
+        }
+        #slider-button-left{
+            left:0;
+        }
+        #slider-button-right{
+            right:0;
+        }
+        #slider-button-left:hover, #slider-button-right:hover{
+            opacity:1.0;
+        }
+        /*하단 버튼 구현 부분 */
+        .buttons{
+            width: 100%;
+            margin-top: 30px;
+            height: 100%;
+            text-align: center;
+            min-width:1016px;
+        }
+        .button{
+            display:inline-block;
+            margin: 0 50px;
+        }
+        .category{
+            border-radius: 50% 50%;
+            box-shadow: 5px 5px 5px rgb(150, 150, 150), -0.5px -0.5px 6px rgb(150, 150, 150);
+            transition: 0.4s; /* 마우스 올렸을 때 부드럽게 변하도록 해주는 속성 */
+        }
+        .category:hover{
+            transform: scale(1.1);
+            background-color: rgb(240, 240, 240);
+        }
+        .category:active{ /* 클릭했을 때 */
+            transform: scale(0.95);
+            transition: 0.06s;
+        }
+
+    </style>
+    <script src="./tabClock/tabClock.js"></script> <!-- 상단 시계 구현 부분-->
+    <script>
+        // 카테고리 이동 셀렉트 박스 구현 부분
+         const firstCategoryUrls = { // 대분류 카테고리 URL 매핑
+            mechanical: 'category/mechanicalPencilCategory.html',
+            ballpoint : 'category/ballpointPenCategory.html',
+            fountain  : 'category/fountainPenCategory.html',
+            notebook  : 'category/notebookCategory.html',
+            eraser    : 'category/eraserCategory.html'
+        };
+        const secondCategoryUrls = { // 소분류 카테고리 URL 매핑
+            mechanical: [{text:'[자바펜] 메탈그립샤프', url: './category/mechanicalPencil/metalgrip.html'},
+                        {text: '[자바펜] 자바 제도', url: './category/mechanicalPencil/javajedo.html'},
+                        {text: '[펜텔] 그래프1000', url: './category/mechanicalPencil/graph1000.html'},
+                        {text: '[펜텔] P20x', url: './category/mechanicalPencil/p205.html'},
+                        {text: '[펜텔] 스매쉬', url: './category/mechanicalPencil/smash.html'},
+                        {text: '[파이롯트] S20', url: './category/mechanicalPencil/s20.html'},
+                        {text: '[파이롯트] S30', url: './category/mechanicalPencil/s30.html'},
+                        {text: '[미쓰비시 연필] 알파겔 슬림', url: './category/mechanicalPencil/alphagelslim.html'},
+                        {text: '[미쓰비시 연필] 알파겔 흔들샤프', url: './category/mechanicalPencil/alphagel.html'},
+                        {text: '[파카] 조터 오리지널', url: './category/mechanicalPencil/jotter.html'},],
+
+            ballpoint: [{text:'[미쓰비시 연필] 제트스트림', url: './category/ballpointPen/jetstream.html'},
+                        {text: '[모나미] FX 153', url: './category/ballpointPen/fx153.html'},
+                        {text: '[모나미] FX 제타', url: './category/ballpointPen/fxzeta.html'},
+                        {text: '[모나미] BP 153', url: './category/ballpointPen/bp153.html'},
+                        {text: '[파이롯트] 하이테크-C', url: './category/ballpointPen/hitec_c.html'},
+                        {text: '[제노] 제로-G', url: './category/ballpointPen/zero_g.html'},
+                        {text: '[제브라] 사라사 드라이', url: './category/ballpointPen/sarasadry.html'},
+                        {text: '[미쓰비시 연필] 유니볼 아이', url: './category/ballpointPen/uniballeye.html'},
+                        {text: '[자바펜] 제트라인', url: './category/ballpointPen/jetline.html'},
+                        {text: '[모닝글로리] 프로마하', url: 'category/ballpointPen/promach.html'},],
+
+            fountain: [{text:'[자바펜] 로얄골드', url: './category/fountainPen/royalgold.html'},
+                        {text: '[자바펜] 로얄플래티늄', url: './category/fountainPen/royalplatinum.html'},
+                        {text: '[자바펜] 노블레스', url: './category/fountainPen/noblesse.html'},
+                        {text: '[파카] 조터 오리지널', url: './category/fountainPen/jotterfountain.html'},
+                        {text: '[파카] 벡터XL 메탈릭', url: './category/fountainPen/vectorXL.html'},
+                        {text: '[파카] 파카 51 코어', url: './category/fountainPen/parka51.html'},
+                        {text: '[라미] 사파리', url: './category/fountainPen/lamysafari.html'},
+                        {text: '[라미] 2000', url: './category/fountainPen/lamy2000.html'},
+                        {text: '[모나미] 153네오 EF', url: './category/fountainPen/153neo.html'},
+                        {text: '[모나미] 153 ID', url: './category/fountainPen/153id.html'},],
+
+            notebook: [{text:'[모나미] 지퀀스', url: './category/notebook/zequenz.html'},
+                        {text: '[아이비스] 6500 아트인덱스노트', url: './category/notebook/ibisart.html'},
+                        {text: '[아이비스] 5000 캠퍼스노트', url: './category/notebook/ibiscampus.html'},
+                        {text: '[더블에이] 플러스 좌철노트', url: './category/notebook/doubleaplus.html'},
+                        {text: '[양지사] 스프링노트 대 3호', url: './category/notebook/yangji.html'},
+                        {text: '[모닝글로리] 4500 메탈캠퍼스4메이트', url: './category/notebook/morningmetal.html'},
+                        {text: '[모닝글로리] 5000 밀키컬러노트_라인', url: './category/notebook/morningmilky.html'},
+                        {text: '[모닝글로리] 5000 캠퍼스메이트노트', url: './category/notebook/morningcampus.html'},
+                        {text: '[펜피아] 5000 밴딩 스프링 노트', url: './category/notebook/penpiaband.html'},
+                        {text: '[펜피아] 5500 싸바리 민자(25절)', url: './category/notebook/penpiasaba.html'},],
+
+            eraser: [{text:'[모닝글로리] 1000 독도지우개 ver.3', url: './category/eraser/morningdokdo.html'},
+                    {text: '[모닝글로리] 700 비움 지우개 Ver.2', url: './category/eraser/morningbium.html'},
+                    {text: '[모닝글로리] 500 슬림 라인 지우개 4mm', url: './category/eraser/morningslim.html'},
+                    {text: '[모닝글로리] 1000 프리미엄 CI 지우개', url: './category/eraser/morningpremium.html'},
+                    {text: '[모나미] 그리픽스 Z (리뉴얼)', url: './category/eraser/monamigripix.html'},
+                    {text: '[파버카스텔] 더스트프리', url: './category/eraser/fabercastelldust.html'},
+                    {text: '[펜텔] 아인', url: './category/eraser/pentelain.html'},
+                    {text: '[스테들러] 마스 플라스틱', url: './category/eraser/staedtlermars.html'},
+                    {text: '[톰보우] 모노 스텐다드', url: './category/eraser/monostandard.html'},
+                    {text: '[톰보우] 모노 더스트캐치', url: './category/eraser/monodustcatch.html'},]
+            
+        }
+
+        function firstCategorySelect(){ // 대분류 선택 시 소분류 에 정보를 넣음 및 수정
+            const firstCategory = document.getElementById('first-category-select');
+            const secondCategory = document.getElementById('second-category-select');
+5
+            const selected = firstCategory.value;
+            secondCategory.innerHTML = '<option value="">선택</option>'; //기존 옵션 초기화
+
+            // 대분류를 아직 안 골랐거나, 해당 소분류 리스트가 없으면 끝
+            if (!selected || !secondCategoryUrls[selected]) return;
+
+            const options = secondCategoryUrls[selected];
+            let optionHtml = '';
+            for (let i in options){
+                optionHtml += '<option value=' + options[i].url + '>' + options[i].text + '</option>';
+            }
+            secondCategory.innerHTML += optionHtml;
+        }
+
+        function categoryMove(){ //이동 버튼 클릭
+            const firstCategory = document.getElementById('first-category-select');
+            const secondCategory = document.getElementById('second-category-select');
+
+            const selected = firstCategory.value;
+            const sub = secondCategory.value;
+            if(selected ==""){
+                alert("먼저 대분류부터 선택해주세요.");
+                return;
+            }
+            if(sub ==""){
+                window.location.href = firstCategoryUrls[selected];
+            }
+            if(sub !=""){
+                window.location.href = secondCategory.value;
+            }
+
+        }
+
+        // 슬라이더 구현 부분
+        $(document).ready(function(){
+            let count = $('div.content').length; // 총 이미지 개수
+            let currentIndex = 0; // 현재 이미지 인덱스
+            let clickedButton = false; //버튼 클릭 여부 확인 변수
+            //페이지 이동(600ms 동안 left값을 변경)
+            let changePicture = function(){
+                $('.content-container').animate({left: -1100 * currentIndex}, 500); //left를 마이너스로 준다면 오른쪽으로 이동
+            }
+            //이벤트 연결
+            $('#slider-button-left').click(function(){
+                if(currentIndex > 0){
+                    currentIndex = currentIndex - 1;
+                    clickedButton = true;
+                    changePicture();
+                }
+                //가장 첫번째 이미지에서 왼쪽 버튼 클릭 시 마지막 이미지로 이동
+                else if(currentIndex == 0){
+                    currentIndex = count -1;
+                    clickedButton = true;
+                    changePicture();
+                }
+            });
+            $('#slider-button-right').click(function(){
+                if(currentIndex < count -1){
+                    currentIndex = currentIndex + 1;
+                    clickedButton = true; //버튼 클릭 여부 true로 변경
+                    changePicture();
+                }
+                //가장 마지막 이미지에서 오른쪽 버튼 클릭 시 첫번째 이미지로 이동
+                else if(currentIndex == count - 1){
+                    currentIndex = 0;
+                    clickedButton = true; //버튼 클릭 여부 true로 변경
+                    changePicture();
+                }
+            });
+
+            //자동 슬라이더
+            setInterval(function(){
+                if(!clickedButton){ //버튼 클릭이 없을 때만 자동 슬라이더 작동(오른쪽 이동 방향)
+                    if(currentIndex < count -1){
+                        currentIndex = currentIndex + 1;
+                        changePicture();
+                    }
+                    else if(currentIndex == count - 1){
+                        currentIndex = 0;
+                        changePicture();
+                    }
+                }
+                else{
+                    //버튼 클릭 후 10초 뒤에 자동 슬라이더 재작동
+                    setTimeout(function(){ // 특정 시간이 지난 다음에 코드를 실행하는 함수입니다. 자바스크립트 코드에 일종의 타이머를 설정하는 것입니다.
+                        clickedButton = false; 
+                    }, 10000);
+                }
+            }, 5000); //5초마다 슬라이더 변경
+        });
+
+        // 제목 꾸미기
+        $(document).ready(function(){
+            $('#big-title').slideDown(700); //슬라이드 효과와 함께 표시
+            $('#small-title').delay(900).fadeIn(800); //1초 후에 선명해지면서 나타남
+        })
+
+    </script>
+</head>
+<body>
+    <div class="top">
+        <a href="./main.html">
+            <img src="./image/logoimage.png">
+        </a>
+        <ul class="label">
+            <li class="tab"><a href="./category/mechanicalPencilCategory.html">샤프</a></li>
+            <li class="tab"><a href="./category/ballpointPenCategory.html">볼펜</a></li>
+            <li class="tab"><a href="./category/fountainPenCategory.html">만년필</a></li>
+            <li class="tab"><a href="./category/notebookCategory.html">공책</a></li>
+            <li class="tab"><a href="./category/eraserCategory.html">지우개</a></li>
+        </ul>
+    </div>
+
+    <div class = "second">
+        <div class="search">
+            <select id="first-category-select" onchange="firstCategorySelect()">
+                <option value="">선택</option>
+                <option value="mechanical">샤프</option>
+                <option value="ballpoint">볼펜</option>
+                <option value="fountain">만년필</option>
+                <option value="notebook">공책</option>
+                <option value="eraser">지우개</option>
+            </select>
+            <select id="second-category-select">
+                <option value="">선택</option>
+            </select>
+
+            <input type="button" id="categoryMove" value="카테고리 이동" onclick="categoryMove()">
+        </div>
+    </div>
+
+    <div id="time">
+        <p id="year_month_day_week"></p>
+        <p id="hour_minute_second"></p>
+    </div>
+    <!--슬라이더 구현-->
+    <div id="content-main">
+        <input type="button" id="slider-button-left" value="<">
+        <div id="content-slider">
+            <div id="content-title"><p id="big-title">문구 사전</p>
+            <p id="small-title">다양한 문구를 한 눈에 보기</p></div>
+            <div class="content-container">
+                <div class="content">
+                    <img class="main-image" src="./image/mainImage1.png" width="1100px" height="600px">
+                </div>
+                <div class="content">
+                    <img class="main-image" src="./image/mainImage2.png" width="1100px" height="600px">
+                </div>
+                <div class="content">
+                    <img class="main-image" src="./image/mainImage3.png" width="1100px" height="600px">
+                </div>
+                <div class="content">
+                    <img class="main-image" src="./image/mainImage4.png" width="1100px" height="600px">
+                </div>
+            </div>
+        </div>
+        <input type="button" id="slider-button-right" value=">">
+        
+    </div>
+
+
+    <div class="buttons">
+        <div class="button">
+            <a href="./category/mechanicalPencilCategory.html">
+            <img class="category" src="./image/mechanicalPencilCategory.png" width="100" height="100"></a><br>
+            <p>샤프</p>
+        </div>
+        <div class="button">
+            <a href="./category/ballpointPenCategory.html">
+            <img class="category" src="./image/ballpointPenCategory.png" width="100" height="100"></a><br>
+            <p>볼펜</p>
+        </div>
+        <div class="button">
+            <a href="./category/fountainPenCategory.html">
+            <img class="category" src="./image/fountainPenCategory.png" width="100" height="100"></a><br>
+            <p>만년필</p>
+        </div>
+        <div class="button">
+            <a href="./category/notebookCategory.html">
+            <img class="category" src="./image/notebookCategory.png" width="100" height="100"></a><br>
+            <p>공책</p>
+        </div>
+        <div class="button">
+            <a href="./category/eraserCategory.html">
+            <img class="category" src="./image/eraserCategory.png" width="100" height="100"></a><br>
+            <p>지우개</p>
+        </div>
+    </div>
+
+</body>
+</html>

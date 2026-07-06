@@ -1,0 +1,7 @@
+        body{
+            background-image: url('./background.png');
+            background-size: cover; /*창 크기에 맞추면서도 일정 비율 유지*/
+            background-position: center; /*배경 이미지의 배치 위치를 지정*/
+            background-repeat:no-repeat;
+            background-attachment: fixed;
+        }

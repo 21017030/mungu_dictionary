@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>로얄 골드</title>
+    <link rel="stylesheet" href="../../tabDesign/mainTab.css">
+    <link rel="stylesheet" href="../background/backgroundStyle.css"> <!-- 배경화면 디자인 -->
+    <link rel="stylesheet" href="../categorySource/textBodyStyle.css"> <!-- 본문 내용 디자인 -->
+    <link rel="stylesheet" href="../productSource/productStyle.css"> <!--모든 상품들이 이 스타일을 사용하기 때문에 따로 둠-->
+    <link rel="stylesheet" href="../homebutton/homebuttonStyle.css"> <!-- 홈 버튼 디자인 -->
+    <script src="../../tabClock/tabClock.js"></script>
+    <script src="../productSource/productMethod.js"></script>
+</head>
+<body>
+    <div class="top">
+        <a href="../../main.html">
+            <img src="../../image/logoimage.png">
+        </a>
+        <ul class="label">
+            <li class="tab"><a href="../mechanicalPencilCategory.html">샤프</a></li>
+            <li class="tab"><a href="../ballpointPenCategory.html">볼펜</a></li>
+            <li class="tab"><a href="../fountainPenCategory.html">만년필</a></li>
+            <li class="tab"><a href="../notebookCategory.html">공책</a></li>
+            <li class="tab"><a href="../eraserCategory.html">지우개</a></li>
+        </ul>
+    </div>
+
+    <div class = "second">
+    </div>
+
+    <div id="time">
+        <p id="year_month_day_week"></p>
+        <p id="hour_minute_second"></p>
+    </div>
+    <!--홈 버튼 부분-->
+    <a href="../../main.html">
+        <div id="home">
+            <img id="home-button" src="../homebutton/home.png">
+            <h2>홈으로</h2>
+        </div>
+    </a>
+    <div id="text-body">
+        <p id="title">상세 정보</p>
+        <hr>
+        <div id="product-container">
+        <img id="product" src="../image/royalgold.png" alt="로얄 골드 이미지">
+        <p id="product-name"></p>
+        <p id="product-name">로얄 골드</p>
+        <table id="info">
+            <tr>
+                <th>브랜드</th>
+                <td><a href="https://javapen.com/"><img src="../brandlogo/javapen_logo.png" alt="자바펜 로고" width="320" height="90"></a>
+                    <p>자바펜</p></td>
+            </tr>
+            <tr>
+                <th>사이즈</th>
+                <td>10mm * 141mm (두깨 * 길이)</td>
+            </tr>
+            <tr>
+                <th>무게</th>
+                <td>26g</td>
+            </tr>
+            <tr>
+                <th>닙 종류</th>
+                <td>F촉</td>
+            </tr>
+            <tr>
+                <th>닙 재질</th>
+                <td>금도금</td>
+            </tr>
+            <tr>
+                <th>제조국</th>
+                <td>대한민국</td>
+            </tr>
+        </table>
+        </div>
+
+        <div id="description">
+            <h1 align="center">제품 특징</h1>
+            <ul>
+                <li>황동 소재에 23K 금장 도금 처리한 럭셔리한 분위기의 만년필</li>
+                <li>고급스럽고 정교한 물결문양의 다이아 컷팅 디자인</li>
+                <li>접착도가 매우 뛰어난 백금 도금으로 잘 변색되지 않음</li>
+                <li>골드와 스틸의 2톤 칼라 고급 펜촉 사용(촉 사이즈 F)</li>
+                <li>잉크 카트리지 2개 포함</li>
+            </ul>
+        </div>
+
+        <div id="select-product">
+            <h3 align="center">제품 사진(다른 색상이 없음)</h3><br>
+            <input class="select-button" onclick="selectProduct(this, './image/royalgold.png')" type="button" value="기본 구성">
+            <input class="select-button" onclick="selectProduct(this, './image/royalgoldset.png')" type="button" value="선물 세트">
+            <div id="selected-image">
+                <img id="show" src="https://dummyimage.com/700x500/fff&text=Select+Picture" height="500px" alt="선택된 제품 이미지">
+                <!--더미 이미지에 원하는 텍스트를 넣을 수 있다(한국어는 불가)-->
+            </div>
+        </div>
+
+        
+
+        <input type="button" id="back-button" value="뒤로 가기" onclick="location.href='../fountainPenCategory.html'">
+    </div>
+
+
+</body>
+</html>

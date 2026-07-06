@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>플러스 좌철노트</title>
+    <link rel="stylesheet" href="../../tabDesign/mainTab.css">
+    <link rel="stylesheet" href="../background/backgroundStyle.css"> <!-- 배경화면 디자인 -->
+    <link rel="stylesheet" href="../categorySource/textBodyStyle.css"> <!-- 본문 내용 디자인 -->
+    <link rel="stylesheet" href="../productSource/productStyle.css"> <!--모든 상품들이 이 스타일을 사용하기 때문에 따로 둠-->
+    <link rel="stylesheet" href="../homebutton/homebuttonStyle.css"> <!-- 홈 버튼 디자인 -->
+    <script src="../../tabClock/tabClock.js"></script>
+    <script src="../productSource/productMethod.js"></script>
+</head>
+<body>
+    <div class="top">
+        <a href="../../main.html">
+            <img src="../../image/logoimage.png">
+        </a>
+        <ul class="label">
+            <li class="tab"><a href="../mechanicalPencilCategory.html">샤프</a></li>
+            <li class="tab"><a href="../ballpointPenCategory.html">볼펜</a></li>
+            <li class="tab"><a href="../fountainPenCategory.html">만년필</a></li>
+            <li class="tab"><a href="../notebookCategory.html">공책</a></li>
+            <li class="tab"><a href="../eraserCategory.html">지우개</a></li>
+        </ul>
+    </div>
+
+    <div class = "second">
+    </div>
+
+    <div id="time">
+        <p id="year_month_day_week"></p>
+        <p id="hour_minute_second"></p>
+    </div>
+    <!--홈 버튼 부분-->
+    <a href="../../main.html">
+        <div id="home">
+            <img id="home-button" src="../homebutton/home.png">
+            <h2>홈으로</h2>
+        </div>
+    </a>
+    <div id="text-body">
+        <p id="title">상세 정보</p>
+        <hr>
+        <div id="product-container">
+        <img id="product" src="../image/doubleaplus.png" alt="플러스 좌철노트 이미지">
+        <p id="product-name"></p>
+        <p id="product-name">플러스 좌철노트</p>
+        <table id="info">
+            <tr>
+                <th>브랜드</th>
+                <td><a href="https://www.doubleapaper.com/kr/kr"><img src="../brandlogo/doublea_logo.png" alt="더블에이 로고" width="320" height="120"></a>
+                    <p>더블에이</p></td>
+            </tr>
+            <tr>
+                <th>사이즈</th>
+                <td>B5: 182 * 257mm (가로 * 세로)</td>
+            </tr>
+            <tr>
+                <th>장수</th>
+                <td>80페이지</td>
+            </tr>
+            <tr>
+                <th>제본 종류</th>
+                <td>스프링 좌철(SP)</td>
+            </tr>
+            <tr>
+                <th>제조국</th>
+                <td>대한민국</td>
+            </tr>
+            <tr>
+                <th>색깔 종류</th>
+                <td id="color">
+                    <div class="fig" style="background:rgb(255, 173, 12)"></div><span>옐로우</span>
+                    <div class="fig" style="background:rgb(44, 44, 58)"></div><span>네이비</span>
+                </td>
+            </tr>
+        </table>
+        </div>
+
+        <div id="description">
+            <h1 align="center">제품 특징</h1>
+            <ul>
+                <li>절취선이 내장되어 있어 깔끔한 절취 가능</li>
+                <li>가로줄과 그리드 타입 내지가 함께 구성되어 자유롭게 사용 가능</li>
+                <li>가격이 비싼 편이지만 종이 재질은 다른 공책에 비해 매우 우수(내 의견)</li>
+            </ul>
+        </div>
+
+        <div id="select-product">
+            <h3 align="center">제품 사진</h3><br>
+            <input class="select-button" onclick="selectProduct(this, './image/doubleaplusyellow.png')" type="button" value="옐로우">
+            <input class="select-button" onclick="selectProduct(this, './image/doubleaplusnavy.png')" type="button" value="네이비">
+            <div id="selected-image">
+                <img id="show" src="https://dummyimage.com/700x500/fff&text=Select+Picture" height="500px" alt="선택된 제품 이미지">
+                <!--더미 이미지에 원하는 텍스트를 넣을 수 있다(한국어는 불가)-->
+            </div>
+        </div>
+
+
+
+        <input type="button" id="back-button" value="뒤로 가기" onclick="location.href='../notebookCategory.html'">
+    </div>
+
+
+</body>
+</html>

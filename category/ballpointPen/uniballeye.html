@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>유니볼 아이</title>
+    <link rel="stylesheet" href="../../tabDesign/mainTab.css">
+    <link rel="stylesheet" href="../background/backgroundStyle.css"> <!-- 배경화면 디자인 -->
+    <link rel="stylesheet" href="../categorySource/textBodyStyle.css"> <!-- 본문 내용 디자인 -->
+    <link rel="stylesheet" href="../productSource/productStyle.css"> <!--모든 상품들이 이 스타일을 사용하기 때문에 따로 둠-->
+    <link rel="stylesheet" href="./canvas/canvasStyle.css"> <!-- 캔버스 디자인 -->
+    <link rel="stylesheet" href="../homebutton/homebuttonStyle.css"> <!-- 홈 버튼 디자인 -->
+    <script src="../../tabClock/tabClock.js"></script>
+    <script src="./canvas/canvasMethod.js"></script>
+    <script src="../productSource/productMethod.js"></script>
+</head>
+<body>
+    <div class="top">
+        <a href="../../main.html">
+            <img src="../../image/logoimage.png">
+        </a>
+        <ul class="label">
+            <li class="tab"><a href="../mechanicalPencilCategory.html">샤프</a></li>
+            <li class="tab"><a href="../ballpointPenCategory.html">볼펜</a></li>
+            <li class="tab"><a href="../fountainPenCategory.html">만년필</a></li>
+            <li class="tab"><a href="../notebookCategory.html">공책</a></li>
+            <li class="tab"><a href="../eraserCategory.html">지우개</a></li>
+        </ul>
+    </div>
+
+    <div class = "second">
+    </div>
+
+    <div id="time">
+        <p id="year_month_day_week"></p>
+        <p id="hour_minute_second"></p>
+    </div>
+    <!--홈 버튼 부분-->
+    <a href="../../main.html">
+        <div id="home">
+            <img id="home-button" src="../homebutton/home.png">
+            <h2>홈으로</h2>
+        </div>
+    </a>
+    <div id="text-body">
+        <p id="title">상세 정보</p>
+        <hr>
+        <div id="product-container">
+        <img id="product" src="../image/uniballeye.png" alt="유니볼 아이 이미지">
+        <p id="product-name"></p>
+        <p id="product-name">유니볼 아이</p>
+        <table id="info">
+            <tr>
+                <th>브랜드</th>
+                <td><a href="http://www.uniball.co.kr/product_list.php?mainCate=1&subCate=001001"><img src="../brandlogo/uni_logo.png" alt="미쓰비시 로고" width="200" height="90"></a>
+                    <p>미쓰비시 연필</p></td>
+            </tr>
+            <tr>
+                <th>볼펜 종류</th>
+                <td>수성 볼펜</td>
+            </tr>
+            <tr>
+                <th>사이즈</th>
+                <td>11.3mm * 138.8mm (두깨 * 길이)</td>
+            </tr>
+            <tr>
+                <th>무게</th>
+                <td>10.6g</td>
+            </tr>
+            <tr>
+                <th>심 종류</th>
+                <td>0.5mm</td>
+            </tr>
+            <tr>
+                <th>제조국</th>
+                <td>일본</td>
+            </tr>
+            <tr>
+                <th>잉크 색상</th>
+                <td id="color">
+                <div class="fig" style="background:rgb(0, 0, 0)"></div><span>블랙</span>
+                <div class="fig" style="background:rgb(0, 77, 161)"></div><span>블루</span>
+                <div class="fig" style="background:rgb(229, 0, 17)"></div><span>레드</span>
+                </td>
+            </tr>
+        </table>
+        </div>
+
+        <div id="description">
+            <h1 align="center">제품 특징</h1>
+            <ul>
+                <li>안료잉크를 사용하기 때문에 선명하게 사용 가능</li>
+                <li>투명창에서 잉크 잔량을 한눈에 알아볼 수 있음</li>
+                <li>펜촉의 잉크 유출량이 일정하기 때문에 마지막 한 방울까지 잉크가 흐르지 않음</li>
+            </ul>
+        </div>
+
+        <div id="select-product">
+            <h3 align="center">제품 사진</h3><br>
+            <input class="select-button" onclick="selectProduct(this, './image/uniball0.5.png')" type="button" value="0.5mm"><!--버튼 클릭시 자기 객체 넣기-->
+            <div id="selected-image">
+                <img id="show" src="https://dummyimage.com/700x500/fff&text=Select+Picture" height="500px" alt="선택된 제품 이미지">
+                <!--더미 이미지에 원하는 텍스트를 넣을 수 있다(한국어는 불가)-->
+            </div>
+        </div>
+
+        <div id="drawing-section">
+            <h3>색상(실물 색상과 다를수 있음)</h3>
+    
+            <div id="color-palette">
+                <span>볼펜 색상 선택: </span>
+                <!-- onclick: 클릭하면 selectColor 함수 실행 -->
+                <!-- this: 클릭한 버튼 자기 자신을 함수에 전달 -->
+                <!-- 두 번째 인자: 해당 버튼의 색상값 전달 -->
+                <button class="color-btn active" style="background-color: rgb(0, 0, 0);" onclick="selectColor(this, 'rgb(0, 0, 0)')"></button>
+                <button class="color-btn" style="background-color: rgb(0, 77, 161);" onclick="selectColor(this, 'rgb(0, 77, 161)')"></button>
+                <button class="color-btn" style="background-color: rgb(229, 0, 17);" onclick="selectColor(this, 'rgb(229, 0, 17)')"></button>
+            </div>
+    
+            <!-- canvas: HTML5에서 그림을 그릴 수 있는 영역 -->
+            <!-- width, height: 캔버스 크기 설정 -->
+            <canvas id="drawing-canvas" width="800" height="400" onmousedown="startDrawing(event)"onmousemove="draw(event)"onmouseup="stopDrawing()"onmouseout="stopDrawing()"></canvas>
+    
+            <div id="canvas-delete">
+                <button onclick="clearCanvas()">전체 지우기</button>
+            </div>
+
+    
+        </div>
+    
+        <input type="button" id="back-button" value="뒤로 가기" onclick="location.href='../ballpointPenCategory.html'">
+    </div>
+
+
+</body>
+</html>

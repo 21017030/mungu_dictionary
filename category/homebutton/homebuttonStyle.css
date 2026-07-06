@@ -1,0 +1,26 @@
+        #home{
+            position:fixed;
+            bottom:30px;
+            text-align:center;
+            left:30px;
+            height:150px;
+            width:150px;
+            border-radius: 50%;
+            overflow:hidden;
+            background-color: white;
+            color: black;
+        }
+        #home > h2{
+            margin-top:-10px;
+        }
+        #home:hover{
+            background-color: rgb(255, 156, 156);
+        }
+        #home:active{
+            transform: scale(0.9);
+            transition:0.1s;
+        }
+        #home-button{
+            width:100px;
+            height:100px;
+        }

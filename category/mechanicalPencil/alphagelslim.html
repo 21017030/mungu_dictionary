@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>알파겔 슬림</title>
+    <link rel="stylesheet" href="../../tabDesign/mainTab.css">
+    <link rel="stylesheet" href="../background/backgroundStyle.css"> <!-- 배경화면 디자인 -->
+    <link rel="stylesheet" href="../categorySource/textBodyStyle.css"> <!-- 본문 내용 디자인 -->
+    <link rel="stylesheet" href="../productSource/productStyle.css"> <!--모든 상품들이 이 스타일을 사용하기 때문에 따로 둠-->
+    <link rel="stylesheet" href="../homebutton/homebuttonStyle.css"> <!-- 홈 버튼 디자인 -->
+    <script src="../../tabClock/tabClock.js"></script>
+    <script src="../productSource/productMethod.js"></script>
+</head>
+<body>
+    <div class="top">
+        <a href="../../main.html">
+            <img src="../../image/logoimage.png">
+        </a>
+        <ul class="label">
+            <li class="tab"><a href="../mechanicalPencilCategory.html">샤프</a></li>
+            <li class="tab"><a href="../ballpointPenCategory.html">볼펜</a></li>
+            <li class="tab"><a href="../fountainPenCategory.html">만년필</a></li>
+            <li class="tab"><a href="../notebookCategory.html">공책</a></li>
+            <li class="tab"><a href="../eraserCategory.html">지우개</a></li>
+        </ul>
+    </div>
+
+    <div class = "second">
+    </div>
+
+    <div id="time">
+        <p id="year_month_day_week"></p>
+        <p id="hour_minute_second"></p>
+    </div>
+    <!--홈 버튼 부분-->
+    <a href="../../main.html">
+        <div id="home">
+            <img id="home-button" src="../homebutton/home.png">
+            <h2>홈으로</h2>
+        </div>
+    </a>
+    <div id="text-body">
+        <p id="title">상세 정보</p>
+        <hr>
+        <div id="product-container">
+            <img id="product" src="../image/alphagelslim.png" alt="알파겔 슬림 이미지">
+            <p id="product-name">알파겔 슬림</p>
+        <table id="info">
+            <tr>
+                <th>브랜드</th>
+                <td><a href="http://www.uniball.co.kr/product_list.php?mainCate=1&subCate=001001"><img src="../brandlogo/uni_logo.png" alt="미쓰비시 연필 로고" width="200" height="90"></a>
+                    <p>미쓰비시 연필</p></td>
+            </tr>
+            <tr>
+                <th>사이즈</th>
+                <td>10.3mm * 146.6mm (두깨 * 길이)</td>
+            </tr>
+            <tr>
+                <th>무게</th>
+                <td>13.5g</td>
+            </tr>
+            <tr>
+                <th>심 종류</th>
+                <td>0.5mm</td>
+            </tr>
+            <tr>
+                <th>제조국</th>
+                <td>일본</td>
+            </tr>
+            <tr>
+                <th>잉크 색상</th>
+                <td id="color">
+                <div class="fig" style="background:rgb(0, 0, 0)"></div><span>블랙</span> <!--style 속성으로 색상을 직접 지정 가능-->
+                <div class="fig" style="background:rgb(138, 204, 242)"></div><span>로얄 블루</span>
+                <div class="fig" style="background:rgb(180, 222, 138)"></div><span>옐로우 그린</span><br>
+                </td>
+            </tr>
+        </table>
+        </div>
+        
+
+        <div id="description">
+            <h1 align="center">제품 특징</h1>
+            <ul>
+                <li>한번 쓰면 계속 쓰고싶은, 말랑~쫀득한 그립의 알파겔 슬림샤프</li>
+                <li>충격흡수 겔 소재를 그립부분에 사용하여, 그립이 개개인의 손에 맞추어져장시간 필기에도 끄떡없는 편안한 그립감을 발휘합니다.</li>
+            </ul>
+        </div>
+
+        <div id="select-product">
+            <h3 align="center">제품 사진</h3><br>
+            <input class="select-button" onclick="selectProduct(this, './image/slimblack.png')" type="button" value="블랙"> <!--버튼 클릭시 자기 객체 넣기-->
+            <input class="select-button" onclick="selectProduct(this, './image/slimblue.png')" type="button" value="로얄블루">
+            <input class="select-button" onclick="selectProduct(this, './image/slimgreen.png')" type="button" value="옐로우그린">
+            <div id="selected-image">
+                <img id="show" src="https://dummyimage.com/700x500/fff&text=Select+Picture" height="500px" alt="선택된 제품 이미지">
+                <!--더미 이미지에 원하는 텍스트를 넣을 수 있다(한국어는 불가)-->
+            </div>
+        </div>
+
+    
+    
+        <input type="button" id="back-button" value="뒤로 가기" onclick="location.href='../mechanicalPencilCategory.html'">
+    </div>
+
+
+</body>
+</html>
